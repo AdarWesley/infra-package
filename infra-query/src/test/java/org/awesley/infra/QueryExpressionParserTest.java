@@ -9,6 +9,7 @@ import java.util.stream.Stream;
 
 import org.awesley.infra.query.AndQueryExpression;
 import org.awesley.infra.query.BinaryQueryExpression;
+import org.awesley.infra.query.NotQueryExpression;
 import org.awesley.infra.query.Operator;
 import org.awesley.infra.query.OrQueryExpression;
 import org.awesley.infra.query.QueryExpression;
@@ -55,6 +56,21 @@ public class QueryExpressionParserTest {
 		assertEquals(2, ((AndQueryExpression)expression).getSubQueryExpressions().size());
 		assertBinaryExpression(((AndQueryExpression)expression).getSubQueryExpressions().get(0), Operator.EQUALS, "aa", "b");
 		assertBinaryExpression(((AndQueryExpression)expression).getSubQueryExpressions().get(1), Operator.LT, "c", "dd");
+	}
+	
+	@Test
+	public void shouldParseAndandNotExpression() {
+		QueryExpressionParser parser = new QueryExpressionParser("aa=b,!c<dd");
+		parser.Parse();
+		QueryExpression expression = parser.getQueryExpression();
+		
+		assertNotNull(expression);
+		assertTrue(AndQueryExpression.class.isAssignableFrom(expression.getClass()));
+		assertEquals(2, ((AndQueryExpression)expression).getSubQueryExpressions().size());
+		assertBinaryExpression(((AndQueryExpression)expression).getSubQueryExpressions().get(0), Operator.EQUALS, "aa", "b");
+		assertTrue(NotQueryExpression.class.isAssignableFrom(((AndQueryExpression)expression).getSubQueryExpressions().get(1).getClass()));
+		NotQueryExpression notSubExpression = (NotQueryExpression)((AndQueryExpression)expression).getSubQueryExpressions().get(1);
+		assertBinaryExpression(notSubExpression.getQueryExpression(), Operator.LT, "c", "dd");
 	}
 	
 	@Test

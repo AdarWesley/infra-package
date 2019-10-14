@@ -12,7 +12,7 @@ public class NotExpressionParser extends ExpressionParser {
 	}
 
 	public void Parse() {
-		if (isLookAhead('!')) {
+		if (!isLookAhead('!')) {
 			throw new ParseExpressionException("NotExpressionParser: invalid Not Expression: " + stringExpression + " at: " + currentOffset);
 		}
 		currentOffset++;
