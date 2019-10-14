@@ -13,5 +13,6 @@
 		<module>infra-security</module>
 		<module>infra-contract-testing</module>
 		<module>infra-query</module>
+		<module>infra-query-jpa</module>
 	</modules>
 </project>
