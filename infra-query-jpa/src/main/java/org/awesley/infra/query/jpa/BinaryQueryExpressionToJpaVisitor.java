@@ -11,9 +11,6 @@ import javax.persistence.criteria.Root;
 import org.awesley.infra.query.BinaryQueryExpression;
 import org.awesley.infra.query.Operator;
 import org.awesley.infra.query.QueryExpression;
-import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 @Component

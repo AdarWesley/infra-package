@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.awesley.infra</groupId>
+	<artifactId>infra-customization</artifactId>
+	<version>1.1-SNAPSHOT</version>
+	<name>${project.groupId}:${project.artifactId}</name>
+
+	<properties>
+		<maven.compiler.plugin.version>3.5.1</maven.compiler.plugin.version>
+		<spring.boot.version>1.5.9.RELEASE</spring.boot.version>
+		<java.source.version>1.8</java.source.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<!-- Import dependency management from Spring Boot -->
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring.boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin.version}</version>
+				<configuration>
+					<compilerArgument>-proc:none</compilerArgument>
+					<source>${java.source.version}</source>
+					<target>${java.source.version}</target>
+					<encoding>UTF-8</encoding>
+					<!-- <generatedSourcesDirectory>${project.build.directory}/generated-sources/</generatedSourcesDirectory> -->
+					<!-- <annotationProcessors> <annotationProcessor>org.awesley.infra.annotation.CustomizationAnnotationProcessor</annotationProcessor> 
+						</annotationProcessors> -->
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
