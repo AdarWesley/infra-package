@@ -13,6 +13,7 @@
 		<java.source.version>1.8</java.source.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.jdk.home>C:\Program Files\Java\jdk1.8.0_241</java.jdk.home>
 	</properties>
 
 	<dependencyManagement>
@@ -27,14 +28,14 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<plugins>
 			<plugin>
